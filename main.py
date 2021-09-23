@@ -18,8 +18,8 @@ def read_file(file = 'forestfires.csv'):
         data = csv.reader(csvfile, delimiter = ',')
         for line in data:
             if line[0] != 'X':
-                line[0] = int(line[0])
-                line[1] = int(line[1])
+                line[0] = NormalizeData(int(line[0]))
+                line[1] = NormalizeData(int(line[1]))
                 for i in range(4, 13):
                     if line[i] == '0':
                         line[i] = 0
