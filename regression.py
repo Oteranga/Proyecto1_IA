@@ -1,4 +1,5 @@
 import numpy as np
+import random
 
 x_train = []
 x_valid = []
@@ -37,10 +38,10 @@ def error(x_features,y_values,w_values,b):
     sum1 /= 2*len(y_values)
     return sum1
 
-def regression(alpha,p,epochs, k = 12):
+def regression(x_train,y_train,x_valid,y_valid,alpha,epochs, k = 12):
     error_train_list = []
     error_valid_list = []
-    w_values = np.linspace(0, 1, num = p)
+    w_values = [1]*y_train.shape[0]
     b = np.random.rand()
     for i in range(epochs):
         dw_values, db = derivate(x_train,y_train,w_values,b,k)
