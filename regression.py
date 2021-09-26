@@ -41,38 +41,39 @@ def error(x_features,y_values,w_values,b):
     sum1 /= 2*len(y_values)
     return sum1
 
-def regression(x_train,y_train,x_valid,y_valid,alpha,epochs, k = 12):
-    error_train_list = []
-    error_valid_list = []
+def regression(x_1,y_1,x_2,y_2,alpha,epochs, k = 12):
+    error_1_list = []
+    error_2_list = []
     w_values = np.random.uniform(0,1,k)
     b = np.random.rand()
     for i in range(epochs):
-        dw_values, db = derivate(x_train,y_train,w_values,b,k)
+        dw_values, db = derivate(x_1,y_1,w_values,b,k)
         w, b = update(w_values,b,dw_values,db,alpha,k)
-        error_train_value = error(x_train,y_train,w_values,b)
-        error_valid_value = error(x_valid,y_valid,w_values,b)
-        error_train_list.append(error_train_value)
-        error_valid_list.append(error_valid_value)
+        error_1_value = error(x_1,y_1,w_values,b)
+        error_2_value = error(x_2,y_2,w_values,b)
+        error_1_list.append(error_1_value)
+        error_2_list.append(error_2_value)
         if i > 20000:
             break
-    return error_train_list,error_valid_list
+    return error_1_list,error_2_list
 
-def regression2(x_train,y_train,x_valid,y_valid,x_test,y_test,alpha,epochs, k = 12):
-    error_train_list = []
-    error_valid_list = []
-    error_test_list = []
+def regression2(x_1,y_1,x_2,y_2,x_3,y_3,alpha,epochs, k = 12):
+    error_1_list = []
+    error_2_list = []
+    error_3_list = []
     w_values = np.random.uniform(0,1,k)
     b = np.random.rand()
+    
     for i in range(epochs):
-        dw_values, db = derivate(x_train,y_train,w_values,b,k)
+        dw_values, db = derivate(x_1,y_1,w_values,b,k)
         w, b = update(w_values,b,dw_values,db,alpha,k)
-        error_train_value = error(x_train,y_train,w_values,b)
-        error_valid_value = error(x_valid,y_valid,w_values,b)
-        error_test_value = error(x_test,y_test,w_values,b)
+        error_1_value = error(x_1,y_1,w_values,b)
+        error_2_value = error(x_2,y_2,w_values,b)
+        error_3_value = error(x_3,y_3,w_values,b)
         
-        error_train_list.append(error_train_value)
-        error_valid_list.append(error_valid_value)
-        error_test_list.append(error_test_value)
+        error_1_list.append(error_1_value)
+        error_2_list.append(error_2_value)
+        error_3_list.append(error_3_value)
         if i > 20000:
             break
-    return error_train_list,error_valid_list,error_test_list
+    return error_1_list,error_2_list,error_3_list
