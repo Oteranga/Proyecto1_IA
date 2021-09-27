@@ -61,5 +61,26 @@ def algorithm2():
     #plt.show()
     plt.savefig("plots/plot_test.png")
     
-algorithm1()
+def algorithm3():
+    epochs = 100
+    alphas = [0.005, 0.5]
+    for i in range(2):
+        alpha = alphas[i]
+        error_train_list,error_valid_list = reg.regression(
+            x_train_features,y_train_values,x_valid_features,y_valid_values,alpha,epochs)
+
+        plt.figure()
+        p1 = plt.scatter(x=list(range(epochs)), y=error_train_list,color="lightskyblue")
+        p2 = plt.scatter(x=list(range(epochs)), y=error_valid_list,color="lightgreen")
+        
+        plt.legend((p1,p2),["Train error","Validation error"])
+        
+        plt.title("Train and Validation Error vs. Epoch",fontdict=font1)
+        plt.xlabel("Epoch",fontdict=font2)
+        plt.ylabel("Error",fontdict=font2)
+        #plt.show()
+        plt.savefig(f"plots/plots_{i}.png")
+    
+#algorithm1()
 #algorithm2()
+#algorithm3()
